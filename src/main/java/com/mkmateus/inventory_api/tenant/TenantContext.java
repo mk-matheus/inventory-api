@@ -17,7 +17,7 @@ public class TenantContext {
         return CURRENT_TENANT.get();
     }
 
-    // MUITO importante: limpa a thread após a requisição terminar
+    // limpa a thread após a requisição terminar
     public static void clear() {
         CURRENT_TENANT.remove();
     }

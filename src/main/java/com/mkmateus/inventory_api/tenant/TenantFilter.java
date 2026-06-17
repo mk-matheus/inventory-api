@@ -13,7 +13,8 @@ import java.io.IOException;
 @Order(1) // esse filter roda antes de qualquer outro
 
 // Filter é uma interface do Jakarta (Servlet API)
-// todo request HTTP passa por aqui antes do Controller
+// todo request passa por aqui antes do ontroller
+
 public class TenantFilter implements Filter {
 
     private static final String TENANT_HEADER = "X-Tenant-ID";

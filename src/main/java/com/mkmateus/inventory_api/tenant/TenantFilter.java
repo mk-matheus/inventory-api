@@ -11,6 +11,9 @@ import java.io.IOException;
 
 @Component
 @Order(1) // esse filter roda antes de qualquer outro
+
+// Filter é uma interface do Jakarta (Servlet API)
+// todo request HTTP passa por aqui antes do Controller
 public class TenantFilter implements Filter {
 
     private static final String TENANT_HEADER = "X-Tenant-ID";
@@ -22,9 +25,11 @@ public class TenantFilter implements Filter {
             FilterChain chain
     ) throws IOException, ServletException {
 
+        // cast necessário pra acessar os headers HTTP
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
+        // lê o header que o cliente enviou
         String tenant = httpRequest.getHeader(TENANT_HEADER);
 
         // se não vier o header, rejeita a requisição
